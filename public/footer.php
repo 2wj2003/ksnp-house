@@ -83,12 +83,14 @@
     // 1. SweetAlert2 JS (จาก CDN)
     echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>';
 
-    // 2. [ใหม่] โหลด Google reCAPTCHA v3
-    // (เราใช้ PHP ดึง Site Key จาก .env มาใส่ในลิงก์)
+    // 2. โหลด Google reCAPTCHA v3
     echo '<script src="https://www.google.com/recaptcha/api.js?render=' . $_ENV['RECAPTCHA_SITE_KEY'] . '"></script>';
 
-    // 3. ไฟล์ JS หลักของเรา (ที่รวมโค้ดเมนู, อนิเมชั่น, ฯลฯ)
-    // (ต้องมี / นำหน้า เพื่อให้ Path ถูกต้อง)
+    // 3. [สำคัญ] ส่ง Site Key ไปให้ JavaScript
+    // (สร้างตัวแปร global ชื่อ recaptchaSiteKey)
+    echo "<script>var recaptchaSiteKey = '" . htmlspecialchars($_ENV['RECAPTCHA_SITE_KEY']) . "';</script>";
+
+    // 4. ไฟล์ JS หลักของเรา (ที่รวมโค้ดเมนู, อนิเมชั่น, ฯลฯ)
     echo '<script src="/js/main.js"></script>';
 ?>
 

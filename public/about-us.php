@@ -20,7 +20,7 @@ include 'nav.php'; //
 
 <main>
 
-    <section class="relative bg-gray-800 text-white"
+    <section class="relative overflow-hidden bg-gray-900 lg:min-h-[calc(100vh-5rem)] text-white"
         style="background-image: url('/images/aboutusthumb.png'); background-size: cover; background-position: center;">
 
         <div class="absolute inset-0 bg-black/60"></div>
