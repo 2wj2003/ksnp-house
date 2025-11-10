@@ -1,0 +1,13 @@
+Options -Indexes
+
+#ป้องกันการโดนโจรกรรมรูปได้
+
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?your-domain.com [NC]
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?google.com [NC]
+
+# --- VVVV เพิ่มบรรทัดนี้ VVVV ---
+RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?localhost [NC]
+
+RewriteRule \.(jpg|jpeg|png|gif|svg)$ - [F,L]
