@@ -2,18 +2,15 @@
 // public/product.php
 
 // 1. (สำคัญ) เรียกใช้ DB และ .env ก่อนเสมอ
-// (เพื่อให้ footer.php โหลด reCAPTCHA key ได้)
 require_once __DIR__ . '/../config/db_connect.php';
 
 // 2. (สำคัญ) ตั้งค่า Meta Tags สำหรับหน้านี้
-// (ผมดึงมาจากโค้ดเก่าของคุณ)
 $page_title = "สินค้าของเรา | Moro Thai";
 $page_description = "สินค้าและผลิตภัณฑ์จาก Moro Thai: เครื่องยก Balancer จาก Toyokoken, เครื่องจักรอัตโนมัติ, อุปกรณ์จับยึด (JIG & FIXTURE) และอื่นๆ";
 $og_url = "https://www.morothai.com/product.php";
 $og_image = "https://www.morothai.com/images/moro-thai-share-image.jpg"; // (สมมติ URL นี้)
 
 // 3. เรียกส่วนหัว (Head)
-// (เดี๋ยวเราจะไปอัปเกรด head.php ให้ใช้ $page_description นี้ด้วย)
 include 'head.php'; //
 
 // 4. เรียกส่วนเมนู (Nav)
@@ -22,22 +19,22 @@ include 'nav.php'; //
 
 <main>
 
-<section id="page-hero" class="relative overflow-hidden bg-gray-900 lg:min-h-[calc(100vh-5rem)] text-white overflow-hidden">
-        <img src="/images/showcase-thumbnail.jpg" 
-             class="absolute inset-0 w-full h-full object-cover opacity-30" 
-             alt="Moro Thailand Products">
+    <section id="page-hero" class="relative bg-gray-900 lg:min-h-[calc(100vh-5rem)] text-white overflow-hidden">
+        <img src="/images/showcase-thumbnail.jpg"
+            class="absolute inset-0 w-full h-full object-cover opacity-30"
+            alt="Moro Thailand Products">
         <div class="absolute inset-0 bg-black/60"></div>
 
-        <div id="page-hero-content" 
-             class="relative container mx-auto px-4 py-32 text-center
+        <div id="page-hero-content"
+            class="relative container mx-auto px-4 py-32 text-center
                     opacity-0 translate-y-5 transition-all duration-700 ease-out">
-            
+
             <h1 class="font-kanit font-bold text-5xl sm:text-5xl text-shadow-lg">
                 สินค้าและผลิตภัณฑ์
             </h1>
             <hr class="w-24 mx-auto mt-6 border-t-4 border-primary">
-            <p class="font-kanit text-xl mt-4 max-w-2xl mx-auto text-shadow">
-                เราคัดสรรและพัฒนาผลิตภัณฑ์คุณภาพสูง <br> เพื่อตอบสนองทุกความต้องการในอุตสาหกรรม
+            <p class="font-kanit text-2xl mt-4 max-w-2xl mx-auto text-shadow">
+                เราคัดสรรและพัฒนาผลิตภัณฑ์คุณภาพสูง <br class="hidden sm:block"> เพื่อตอบสนองทุกความต้องการในอุตสาหกรรม
             </p>
         </div>
     </section>
@@ -45,8 +42,8 @@ include 'nav.php'; //
     <section id="product-list" class="bg-light py-16 sm:py-24 overflow-hidden">
         <div class="container mx-auto px-4">
 
-            <div id="product-grid-title" 
-                 class="text-center mb-12
+            <div id="product-grid-title"
+                class="text-center mb-12
                         opacity-0 translate-y-5 transition-all duration-700 ease-out">
                 <h2 class="font-kanit font-bold text-3xl sm:text-4xl text-primary">
                     หมวดหมู่สินค้าของเรา
@@ -56,10 +53,10 @@ include 'nav.php'; //
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
                 <?php
-                // (ผมแปลงข้อมูลสินค้าจากโค้ดเก่าของคุณมาเป็น Array เพื่อให้จัดการง่าย)
+                // (Array ข้อมูลสินค้ายังเหมือนเดิม)
                 $products = [
                     [
                         'img' => '/images/balancer1.jpg',
@@ -114,33 +111,35 @@ include 'nav.php'; //
                 // (วนลูป PHP เพื่อสร้างการ์ดสินค้า)
                 foreach ($products as $index => $product):
                 ?>
-                
-                <div class="product-card flex flex-col bg-white rounded-lg shadow-lg overflow-hidden
+
+                    <div class="product-card flex flex-col bg-white rounded-lg shadow-lg overflow-hidden
                             transition-all duration-300 hover:shadow-xl hover:-translate-y-2
                             opacity-0 translate-y-5">
-                    
-                    <div class="aspect-w-4 aspect-h-3 overflow-hidden">
-                        <img src="<?php echo htmlspecialchars($product['img']); ?>" 
-                             alt="<?php echo htmlspecialchars($product['alt']); ?>" 
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    
-                    <div class="p-6 flex-grow flex flex-col justify-between">
-                        <h3 class="font-kanit font-bold text-xl text-primary mb-4">
-                            <?php echo htmlspecialchars($product['title']); ?>
-                        </h3>
-                        <a href="<?php echo htmlspecialchars($product['link']); ?>" 
-                           class="inline-block bg-primary hover:bg-primary-dark text-white font-kanit font-medium 
+
+                        <div class="aspect-[4/3] overflow-hidden group">
+                            <img src="<?php echo htmlspecialchars($product['img']); ?>"
+                                alt="<?php echo htmlspecialchars($product['alt']); ?>"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <h3 class="font-kanit font-bold text-xl text-primary mb-4">
+                                <?php echo htmlspecialchars($product['title']); ?>
+                            </h3>
+                            <a href="<?php echo htmlspecialchars($product['link']); ?>"
+                                class="inline-block bg-primary hover:bg-primary-dark text-white font-kanit font-medium 
                                   px-6 py-2.5 rounded-md text-center text-sm
                                   transition duration-300 transform hover:-translate-y-0.5">
-                            ดูรายละเอียด
-                        </a>
+                                ดูรายละเอียด
+                            </a>
+                        </div>
                     </div>
-                </div>
 
                 <?php endforeach; ?>
 
-            </div> </div> </section>
+            </div>
+        </div>
+    </section>
 
     <?php
     // 5.3 เรียก CTA Banner (มาตรฐานของเว็บเรา)
@@ -151,6 +150,5 @@ include 'nav.php'; //
 
 <?php
 // 6. เรียกส่วนท้าย (Footer)
-// (จะโหลด <script> ทั้งหมด รวมถึง main.js ให้อัตโนมัติ)
 include 'footer.php';
 ?>

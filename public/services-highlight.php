@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4">
 
         <h2 id="service-title" 
-            class="font-kanit font-bold text-3xl sm:text-4xl text-center text-white mb-12
+            class="font-kanit font-bold text-4xl sm:text-4xl text-center text-primary mb-12
                    opacity-0 translate-y-5 transition-all duration-700 ease-out">
             บริการของเรา
         </h2>
